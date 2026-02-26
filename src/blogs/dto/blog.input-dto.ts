@@ -5,7 +5,7 @@ export type BlogInputDTO = {
 }
 
 export type BlogUpdateDTO = {
-    id: number,
+    id: string,
     name: string,
     description: string,
     websiteUrl: string

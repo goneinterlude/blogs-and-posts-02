@@ -5,7 +5,7 @@ import { blogsRepository } from "../../repositories/blog.repository";
 
 
 export function deleteBlogHandler(req: Request, res: Response) {
-    const id = +req.body.id;
+    const id = req.body.id;
     const blog = blogsRepository.findById(id);
 
     if (!blog) {

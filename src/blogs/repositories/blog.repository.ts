@@ -6,14 +6,14 @@ export const blogsRepository = {
     findAll(): Blog[] {
         return db.blogs;
     },
-    findById(id: number): Blog | null {
+    findById(id: string): Blog | null {
         return db.blogs.find((d) => d.id === id) ?? null; // Если результат поиска равно null или undefined, то вернем null.
     },
     create(newBlog: Blog): Blog {
         db.blogs.push(newBlog);
         return newBlog;
     },
-    update(id: number, dto: BlogInputDTO): void {
+    update(id: string, dto: BlogInputDTO): void {
         const blog = db.blogs.find((d) => d.id === id);
 
         if (!blog) {
@@ -25,7 +25,7 @@ export const blogsRepository = {
 
         return;
     },
-    delete(id: number): void {
+    delete(id: string): void {
         const index = db.blogs.findIndex((d) => d.id === id);
 
         if (index === -1) {

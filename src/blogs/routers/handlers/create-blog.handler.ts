@@ -8,8 +8,12 @@ import {blogsRepository} from "../../repositories/blog.repository";
 export function createBlogHandler(
     req: Request<{}, {}, BlogInputDTO>,
     res: Response,) {
+
+    const lastId = db.blogs.length ? Number(db.blogs[db.blogs.length - 1].id) : 0;
+    const newId = String(lastId + 1);
+
     const newBlog: Blog = {
-        id: db.blogs.length ? db.blogs[db.blogs.length - 1].id + 1 : 1,
+        id: newId,
         name: req.body.name,
         description: req.body.description,
         websiteUrl: req.body.websiteUrl,

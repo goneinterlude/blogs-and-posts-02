@@ -5,7 +5,7 @@ import {createErrorMessages} from "../../../core/utils/error.utils";
 import {blogsRepository} from "../../repositories/blog.repository";
 
 export function updateBlogHandler(req: Request<{}, {}, BlogUpdateDTO>, res: Response) {
-    const id = +req.body.id;
+    const id = req.body.id;
     const blog = blogsRepository.findById(id);
 
     if (!blog) {
