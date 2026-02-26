@@ -4,8 +4,8 @@ import { createErrorMessages } from '../../../core/utils/error.utils';
 import { postsRepository } from "../../repositories/posts.repository";
 
 
-export function deletePostHandler(req: Request, res: Response) {
-    const id = req.body.id;
+export function deletePostHandler(req: Request<{id: string}>, res: Response) {
+    const id = req.params.id;
     const blog = postsRepository.findById(id);
 
     if (!blog) {
