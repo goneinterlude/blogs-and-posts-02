@@ -6,14 +6,14 @@ export const postsRepository = {
     findAll(): Post[] {
         return db.posts;
     },
-    findById(id: number): Post | null {
+    findById(id: string): Post | null {
         return db.posts.find((d) => d.id === id) ?? null; // Если результат поиска равно null или undefined, то вернем null.
     },
     create(newPost: Post): Post {
         db.posts.push(newPost);
         return newPost;
     },
-    update(id: number, dto: PostUpdateDTO, blogName: string): boolean {
+    update(id: string, dto: PostUpdateDTO, blogName: string): boolean {
         const post = db.posts.find(p => p.id === id);
         if (!post) return false;
 
@@ -25,7 +25,7 @@ export const postsRepository = {
 
         return true;
     },
-    delete(id: number): void {
+    delete(id: string): void {
         const index = db.posts.findIndex((d) => d.id === id);
 
         if (index === -1) {
