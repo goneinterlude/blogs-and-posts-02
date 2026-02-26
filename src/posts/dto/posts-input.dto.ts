@@ -2,12 +2,12 @@ export type PostInputDTO = {
     title: string,
     shortDescription: string,
     content: string,
-    blogId: number,
+    blogId: string,
 }
 
 export type PostUpdateDTO = {
     title: string,
     shortDescription: string,
     content: string,
-    blogId: number,
+    blogId: string,
 }

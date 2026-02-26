@@ -8,7 +8,7 @@ import {blogsRepository} from "../../../blogs/repositories/blog.repository";
 import {createErrorMessages} from "../../../core/utils/error.utils";
 
 export function createPostHandler(
-    req: Request<{}, {}, PostInputDTO>,
+    req: Request<{blogId: string}, {}, PostInputDTO>,
     res: Response,) {
     const blogId = req.body.blogId;
     const blog = blogsRepository.findById(blogId);
@@ -18,9 +18,10 @@ export function createPostHandler(
             createErrorMessages([{ message: "Blog not found", field: "blogId" }])
         );
     }
-
+    const lastId = db.posts.length ? Number(db.posts[db.posts.length - 1].id) : 0;
+    const newId = String(lastId + 1)
     const newPost: Post = {
-        id: db.posts.length ? db.posts[db.posts.length - 1].id + 1 : 1,
+        id: newId,
         title: req.body.title,
         shortDescription: req.body.shortDescription,
         content: req.body.content,
