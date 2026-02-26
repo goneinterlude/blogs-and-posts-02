@@ -5,7 +5,7 @@ import {HttpStatus} from "../core/types/http-statuses";
 export const testingRouter = Router({});
 
 testingRouter.delete('/all-data', (req: Request, res: Response) => {
-    db.blogs = [];
-    db.posts = [];
+    db.blogs.length = 0;
+    db.posts.length = 0;
     res.sendStatus(HttpStatus.NoContent);
 });
