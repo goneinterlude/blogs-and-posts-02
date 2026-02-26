@@ -11,7 +11,7 @@ export function updatePostHandler(
     req: Request<{ id: string }, {}, PostInputDTO>,
     res: Response
 ) {
-    const postId = +req.params.id;
+    const postId = req.params.id;
 
     const blogId = req.body.blogId; // number
     const blog = blogsRepository.findById(blogId);

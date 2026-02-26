@@ -10,7 +10,7 @@ import {createErrorMessages} from "../../../core/utils/error.utils";
 export function createPostHandler(
     req: Request<{}, {}, PostInputDTO>,
     res: Response,) {
-    const blogId = +req.body.blogId;
+    const blogId = req.body.blogId;
     const blog = blogsRepository.findById(blogId);
 
     if (!blog) {

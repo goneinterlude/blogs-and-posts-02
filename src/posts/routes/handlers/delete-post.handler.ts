@@ -5,7 +5,7 @@ import { postsRepository } from "../../repositories/posts.repository";
 
 
 export function deletePostHandler(req: Request, res: Response) {
-    const id = +req.body.id;
+    const id = req.body.id;
     const blog = postsRepository.findById(id);
 
     if (!blog) {
