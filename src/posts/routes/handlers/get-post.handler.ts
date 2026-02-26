@@ -4,7 +4,7 @@ import { createErrorMessages } from '../../../core/utils/error.utils';
 import { postsRepository} from "../../repositories/posts.repository";
 
 export function getPostHandler(req: Request<{id: string}>, res: Response) {
-    const id = req.body.id
+    const id = req.params.id
     const post = postsRepository.findById(id)
     if (!post) {
         res
@@ -14,5 +14,5 @@ export function getPostHandler(req: Request<{id: string}>, res: Response) {
             );
         return;
     }
-    res.send(post);
+    return res.status(HttpStatus.Ok).send(post)
 }

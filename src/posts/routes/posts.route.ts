@@ -19,7 +19,7 @@ postsRouter.get('/:id', idValidation, inputValidationResultMiddleware, getPostHa
 
 postsRouter.post('', superAdminGuardMiddleware, postInputDtoValidation, inputValidationResultMiddleware ,createPostHandler, );
 
-postsRouter.put('', idValidation, postInputDtoValidation,superAdminGuardMiddleware, inputValidationResultMiddleware, updatePostHandler);
+postsRouter.put('/:id', idValidation, postInputDtoValidation,superAdminGuardMiddleware, inputValidationResultMiddleware, updatePostHandler);
 
-postsRouter.delete('', idValidation, superAdminGuardMiddleware, inputValidationResultMiddleware, deletePostHandler);
+postsRouter.delete('/:id', idValidation, superAdminGuardMiddleware, inputValidationResultMiddleware, deletePostHandler);
 
