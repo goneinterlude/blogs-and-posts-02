@@ -8,14 +8,10 @@ export function deleteBlogHandler(req: Request<{id: string}>, res: Response) {
     const id = req.params.id;
     const blog = blogsRepository.findById(id);
 
-    if (!blog) {
-        res
-            .status(HttpStatus.NotFound)
-            .send(
-                createErrorMessages([{ field: 'id', message: 'Blog not found' }]),
-            );
-        return;
+    try {
+        blogsRepository.delete(id);
+        return res.sendStatus(HttpStatus.NoContent);
+    } catch (e) {
+        return res.sendStatus(HttpStatus.NotFound);
     }
-    blogsRepository.delete(id);
-    res.sendStatus(HttpStatus.NoContent);
 }
