@@ -20,7 +20,7 @@ const contentValidation = body('content')
     .withMessage('length of content is not correct')
 const blogIdValidation = body('blogId')
 .isString()
-.withMessage('blogId should be string')
+.withMessage('blogId should be string');
 export const postInputDtoValidation = [
     titleValidation,
     descriptionValidation,

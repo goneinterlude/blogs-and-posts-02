@@ -14,9 +14,7 @@ export function createPostHandler(
     const blog = blogsRepository.findById(blogId);
 
     if (!blog) {
-        return res.status(HttpStatus.BadRequest).send(
-            createErrorMessages([{ message: "Blog not found", field: "blogId" }])
-        );
+        return res.sendStatus(HttpStatus.BadRequest)
     }
     const lastId = db.posts.length ? Number(db.posts[db.posts.length - 1].id) : 0;
     const newId = String(lastId + 1)

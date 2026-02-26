@@ -8,10 +8,7 @@ export function getPostHandler(req: Request<{id: string}>, res: Response) {
     const post = postsRepository.findById(id)
     if (!post) {
         res
-            .status(HttpStatus.NotFound)
-            .send(
-                createErrorMessages([{field: "id", message: "No post found"}]),
-            );
+            .sendStatus(HttpStatus.NotFound)
         return;
     }
     return res.status(HttpStatus.Ok).send(post)
