@@ -4,8 +4,8 @@ import { createErrorMessages } from '../../../core/utils/error.utils';
 import { blogsRepository } from "../../repositories/blog.repository";
 
 
-export function deleteBlogHandler(req: Request, res: Response) {
-    const id = req.body.id;
+export function deleteBlogHandler(req: Request<{id: string}>, res: Response) {
+    const id = req.params.id;
     const blog = blogsRepository.findById(id);
 
     if (!blog) {
