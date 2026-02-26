@@ -4,8 +4,8 @@ import {HttpStatus} from "../../../core/types/http-statuses";
 import {createErrorMessages} from "../../../core/utils/error.utils";
 import {blogsRepository} from "../../repositories/blog.repository";
 
-export function updateBlogHandler(req: Request<{}, {}, BlogUpdateDTO>, res: Response) {
-    const id = req.body.id;
+export function updateBlogHandler(req: Request<{id: string}, {}, BlogUpdateDTO>, res: Response) {
+    const id = req.params.id;
     const blog = blogsRepository.findById(id);
 
     if (!blog) {
