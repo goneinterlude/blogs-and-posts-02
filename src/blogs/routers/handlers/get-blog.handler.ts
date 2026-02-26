@@ -3,8 +3,8 @@ import { HttpStatus } from '../../../core/types/http-statuses';
 import { createErrorMessages } from '../../../core/utils/error.utils';
 import { blogsRepository } from "../../repositories/blog.repository";
 
-export function getBlogHandler(req: Request, res: Response) {
-    const id = req.body.id
+export function getBlogHandler(req: Request<{id: string}>, res: Response) {
+    const id = req.params.id
     const blog = blogsRepository.findById(id)
     if (!blog) {
         res
@@ -14,5 +14,5 @@ export function getBlogHandler(req: Request, res: Response) {
             );
         return;
     }
-    res.send(blog);
+    return res.status(HttpStatus.Ok).send(blog);
 }
