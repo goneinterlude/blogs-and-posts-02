@@ -8,9 +8,9 @@ import {blogsRepository} from "../../../blogs/repositories/blog.repository";
 import {createErrorMessages} from "../../../core/utils/error.utils";
 
 export function createPostHandler(
-    req: Request<{blogId: string}, {}, PostInputDTO>,
+    req: Request<{}, {}, PostInputDTO>,
     res: Response,) {
-    const blogId = req.params.blogId;
+    const blogId = req.body.blogId;
     const blog = blogsRepository.findById(blogId);
 
     if (!blog) {
